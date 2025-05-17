@@ -2,19 +2,124 @@
 //
 
 #include <iostream>
+using namespace std;
+
+void randomTeams()
+{
+
+}
+void r1WcUserInput()
+{
+    string wcTeams[15] = {
+        "Denver Nuggets", "Phoenix Suns", "Golden State Warriors", 
+        "Los Angeles Lakers", "Los Angeles Clippers", "Sacramento Kings", 
+        "Minnesota Timberwolves", "Dallas Mavericks", "New Orleans Pelicans", 
+        "Oklahoma City Thunder", "Memphis Grizzlies", "Houston Rockets", 
+        "San Antonio Spurs", "Utah Jazz", "Portland Trail Blazers"
+    };
+
+    string wcPlayoffTeams[8];
+    int numberOfTeams = 0;
+    // Print teams 0 to 14
+    for (int i = 0; i < 15; i++) {
+        
+        cout << "No." << i + 1 << " " << wcTeams[i] << endl;
+        
+    }
+
+    cout << "\nChoose 8 teams (by number 0-14) to advance to the Western Conference playoffs:\n";
+
+    for (int count = 0; count < 8; count++) {
+        int choice;
+        cout << "Team " << (count + 1) << ": ";
+        cin >> choice;
+
+        while (choice < 0 || choice >= 15) {
+            cout << "Invalid input. Try again (0-14): ";
+            cin >> choice;
+        }
+
+        wcPlayoffTeams[count] = wcTeams[choice];
+    }
+
+    cout << "\nYou chose these teams:\n";
+    for (int i = 0; i < 8; i++) {
+        cout << wcPlayoffTeams[i] << endl;
+    }
+}
+void r1EcUserInput()
+{
+    string ecTeams[15] = {
+        "Boston Celtics", "Milwaukee Bucks", "Philadelphia 76ers", 
+        "Cleveland Cavaliers", "New York Knicks", "Miami Heat", 
+        "Atlanta Hawks", "Toronto Raptors", "Chicago Bulls", 
+        "Indiana Pacers", "Brooklyn Nets", "Charlotte Hornets", 
+        "Detroit Pistons", "Orlando Magic", "Washington Wizards"
+    };
+
+    string ecPlayoffTeams[8];
+    int numberOfTeams = 0;
+    // Print teams 0 to 14
+    for (int i = 0; i < 15; i++) {
+        
+        cout << "No." << i + 1 << " " << ecTeams[i] << endl;
+        
+    }
+
+    cout << "\nChoose 8 teams (by number 0-14) to advance to the Eastern Conference playoffs:\n";
+
+    for (int count = 0; count < 8; count++) {
+        int choice;
+        cout << "Team " << (count + 1) << ": ";
+        cin >> choice;
+
+        while (choice < 0 || choice >= 15) {
+            cout << "Invalid input. Try again (0-14): ";
+            cin >> choice;
+        }
+
+        ecPlayoffTeams[count] = ecTeams[choice];
+    }
+
+    cout << "\nYou chose these teams:\n";
+    for (int i = 0; i < 8; i++) {
+        cout << ecPlayoffTeams[i] << endl;
+    }
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    
+    string wcPlayoffTeam[8];
+    string ecPlayoffTeam[8];
+
+
+    int q1_answe;
+    bool loopCondition = true;
+
+    cout << "do you want to manually simulate who progresses in the playoff tournament? \n";
+    cout << "1.y 2.n \n";
+    cin >> q1_answe;
+
+    while (loopCondition == true)
+    {
+        if (q1_answe ==1)
+        {
+            int i = 0;
+            int maxTeams = 7;
+            for (i = 0; i < maxTeams;)
+            {
+                //have the user choose the 8 teams that will be nominated
+                r1WcUserInput();
+                loopCondition = false;
+                break;
+                
+                //update the list
+                //display the list to show the user the teams advancing
+            }
+            break;
+        }
+       
+    }
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
