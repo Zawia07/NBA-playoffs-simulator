@@ -8,7 +8,7 @@ void randomTeams()
 {
 
 }
-void r1WcUserInput()
+void WcUserInput()
 {
     string wcTeams[15] = {
         "Denver Nuggets", "Phoenix Suns", "Golden State Warriors", 
@@ -19,6 +19,8 @@ void r1WcUserInput()
     };
 
     string wcPlayoffTeams[8];
+    string wcR2PlayoffTeams[4];
+    string wcWcfPlayoffTeams[4];
     int numberOfTeams = 0;
     // Print teams 0 to 14
     for (int i = 0; i < 15; i++) {
@@ -27,7 +29,7 @@ void r1WcUserInput()
         
     }
 
-    cout << "\nChoose 8 teams (by number 0-14) to advance to the Western Conference playoffs:\n";
+    cout << "\nChoose 8 teams (by number 1-15) to advance to the Western Conference playoffs:\n";
 
     for (int count = 0; count < 8; count++) {
         int choice;
@@ -35,7 +37,7 @@ void r1WcUserInput()
         cin >> choice;
 
         while (choice < 0 || choice >= 15) {
-            cout << "Invalid input. Try again (0-14): ";
+            cout << "Invalid input. Try again (1-15): ";
             cin >> choice;
         }
 
@@ -44,8 +46,36 @@ void r1WcUserInput()
 
     cout << "\nYou chose these teams:\n";
     for (int i = 0; i < 8; i++) {
-        cout << wcPlayoffTeams[i] << endl;
+        cout <<"No." << i+1 << " " << wcPlayoffTeams[i] << endl;
     }
+
+    cout << "\nChoose 4 teams (by number 1-15) to advance to the Western Conference playoffs:\n";
+
+    for (int i = 0; i < 4; i++)
+    {
+        int choice;
+        cout << "Team No. " << i+1 << " :";
+        cin >> choice;
+
+        while (choice < 0 || choice >= 8) {
+            cout << "Invalid input. Try again (1-8): ";
+            cin >> choice;
+        }
+
+        wcPlayoffTeams[choice]= wcR2PlayoffTeams[i];
+    }
+
+    cout << "The teams progressing to the Western Conference 2nd round are: \n";
+
+    for (int i = 0; i < 5; i++)
+    {
+        /* code */
+        
+        cout << "Team No. " << i+1 << " " << wcR2PlayoffTeams[i];
+    }
+    
+    
+    
 }
 void r1EcUserInput()
 {
@@ -110,7 +140,7 @@ int main()
             for (i = 0; i < maxTeams;)
             {
                 //have the user choose the 8 teams that will be nominated
-                r1WcUserInput();
+                WcUserInput();
                 loopCondition = false;
                 break;
                 
