@@ -54,7 +54,7 @@ void WcUserInput()
     for (int i = 0; i < 4; i++)
     {
         int choice;
-        cout << "Team No. " << i+1 << " :";
+        cout << "Team No" << i+1 << " :";
         cin >> choice;
 
         while (choice < 0 || choice >= 8) {
@@ -62,16 +62,15 @@ void WcUserInput()
             cin >> choice;
         }
 
-        wcPlayoffTeams[choice]= wcR2PlayoffTeams[i];
+        wcR2PlayoffTeams[i]=wcPlayoffTeams[choice];
     }
 
     cout << "The teams progressing to the Western Conference 2nd round are: \n";
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 4; i++)
     {
         /* code */
-        
-        cout << "Team No. " << i+1 << " " << wcR2PlayoffTeams[i];
+        cout << "Team No." << i+1 << " " << wcR2PlayoffTeams[i] << endl;
     }
     
     
