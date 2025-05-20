@@ -2,7 +2,9 @@
 //
 
 #include <iostream>
+#include <thread>
 using namespace std;
+
 
 string wcTeams[15] = {
         "Denver Nuggets", "Phoenix Suns", "Golden State Warriors", 
@@ -207,6 +209,33 @@ void EcUserInput()
     cout << "\nCongrats to " << playoffFinalsTeams[1] << " for dominating the East and making it to the NBA Finals!\n";
 }
 
+void NBA_FINALS()
+{
+    cout << "\nWelcome everybody to the NBA Finals! Today's matchup is between "
+         << playoffFinalsTeams[0] << " from the Western Conference and "
+         << playoffFinalsTeams[1] << " from the East.\n";
+    this_thread::sleep_for(chrono::seconds(2));
+
+    cout << "It's going to be insane to see who comes out as this year's NBA champion "
+         << "because it has been a wild ride for both teams—and you could say either of them deserves it!\n\n";
+    this_thread::sleep_for(chrono::seconds(2));
+
+    cout << "HIDDEN MESSAGE\nHey kid! We're the NBA script writers and we decided to make YOU choose "
+         << "who will win this year's trophy. Make the right choice!!!\n";
+    this_thread::sleep_for(chrono::seconds(2));
+
+    int answer;
+    cout << "\nChoose 1 or 2 to declare the winner:\n";
+    cout << "1. " << playoffFinalsTeams[0] << "\n";
+    cout << "2. " << playoffFinalsTeams[1] << "\n> ";
+    cin >> answer;
+
+    this_thread::sleep_for(chrono::seconds(2));
+    cout << "\nAnd the winner for this year's NBA FINALS IS... "
+         << playoffFinalsTeams[answer - 1] << "!!! WOHOOO—CONGRATULATIONS ON THE WIN!!!!\n";
+}
+
+
 int main()
 {
     
@@ -231,8 +260,10 @@ int main()
             {
                 //have the user choose the 8 teams that will be nominated
                 cout<< "\n";
-                // WcUserInput();
+                WcUserInput();
                 EcUserInput();
+                NBA_FINALS();
+
                 loopCondition = false;
                 break;
                 
