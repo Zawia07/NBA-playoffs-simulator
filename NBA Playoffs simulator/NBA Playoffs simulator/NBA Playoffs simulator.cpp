@@ -26,14 +26,10 @@ string ecTeams[15] = {
 
 string ecPlayoffTeams[8];
 string ecR2PlayoffTeams[4];
-string ecWcfPlayoffTeams[2];
+string ecfPlayoffTeams[2];
 
 string playoffFinalsTeams[2];
 
-void randomTeams()
-{
-
-}
 void WcUserInput()
 {
     // Print teams 0 to 14
@@ -121,44 +117,94 @@ void WcUserInput()
     
 
 }
-void r1EcUserInput()
+void EcUserInput()
 {
-    string ecTeams[15] = {
-        "Boston Celtics", "Milwaukee Bucks", "Philadelphia 76ers", 
-        "Cleveland Cavaliers", "New York Knicks", "Miami Heat", 
-        "Atlanta Hawks", "Toronto Raptors", "Chicago Bulls", 
-        "Indiana Pacers", "Brooklyn Nets", "Charlotte Hornets", 
-        "Detroit Pistons", "Orlando Magic", "Washington Wizards"
-    };
-
-    string ecPlayoffTeams[8];
-    int numberOfTeams = 0;
-    // Print teams 0 to 14
-    for (int i = 0; i < 15; i++) {
-        
-        cout << "No." << i + 1 << " " << ecTeams[i] << endl;
-        
+    cout << "Below are all the teams in the ECF\n" << endl;
+    for (int i = 0; i < 15; i++)
+    {
+        cout << "Team No." << i + 1 << " " << ecTeams[i] << endl;
     }
 
-    cout << "\nChoose 8 teams (by number 0-14) to advance to the Eastern Conference playoffs:\n";
+    int answer;
+    cout << "\nWhich of these teams would you like to progress to the first round?\n";
 
-    for (int count = 0; count < 8; count++) {
-        int choice;
-        cout << "Team " << (count + 1) << ": ";
-        cin >> choice;
+    for (int i = 0; i < 8; i++)
+    {
+        cout << "ECF team No." << i + 1 << ": ";
+        cin >> answer;
 
-        while (choice < 0 || choice >= 15) {
-            cout << "Invalid input. Try again (0-14): ";
-            cin >> choice;
+        while (answer < 1 || answer > 15)
+        {
+            cout << "Invalid input, friend. The NUMBER should be between 1 and 15. Try again: ";
+            cin >> answer;
         }
 
-        ecPlayoffTeams[count] = ecTeams[choice];
+        ecPlayoffTeams[i] = ecTeams[answer - 1];
     }
 
-    cout << "\nYou chose these teams:\n";
-    for (int i = 0; i < 8; i++) {
-        cout << ecPlayoffTeams[i] << endl;
+    cout << "\nThe teams moving to the first round are:\n";
+    for (int i = 0; i < 8; i++)
+    {
+        cout << "No." << i + 1 << " " << ecPlayoffTeams[i] << endl;
     }
+
+    cout << "\nChoose the teams moving to the second round:\n";
+
+    for (int i = 0; i < 4; i++)
+    {
+        cout << "Choose winner No." << i + 1 << " (1-8): ";
+        cin >> answer;
+
+        while (answer < 1 || answer > 8)
+        {
+            cout << "Invalid input. Please choose a number between 1 and 8: ";
+            cin >> answer;
+        }
+
+        ecR2PlayoffTeams[i] = ecPlayoffTeams[answer - 1];
+    }
+
+    cout << "\nTeams moving to the second round:\n";
+    for (int i = 0; i < 4; i++)
+    {
+        cout << "No." << i + 1 << " " << ecR2PlayoffTeams[i] << endl;
+    }
+
+    cout << "\nChoose the teams moving to the Eastern Conference Finals:\n";
+
+    for (int i = 0; i < 2; i++)
+    {
+        cout << "Choose winner No." << i + 1 << " (1-4): ";
+        cin >> answer;
+
+        while (answer < 1 || answer > 4)
+        {
+            cout << "Invalid input. Please choose a number between 1 and 4: ";
+            cin >> answer;
+        }
+
+        ecfPlayoffTeams[i] = ecR2PlayoffTeams[answer - 1];
+    }
+
+    cout << "\nEastern Conference Finalists:\n";
+    for (int i = 0; i < 2; i++)
+    {
+        cout << "No." << i + 1 << " " << ecfPlayoffTeams[i] << endl;
+    }
+
+    cout << "\nNow choose the team that will move on to the NBA Finals:\n";
+    cout << "Enter 1 for " << ecfPlayoffTeams[0] << " or 2 for " << ecfPlayoffTeams[1] << ": ";
+    cin >> answer;
+
+    while (answer < 1 || answer > 2)
+    {
+        cout << "Invalid input. Enter 1 or 2: ";
+        cin >> answer;
+    }
+
+    playoffFinalsTeams[1] = ecfPlayoffTeams[answer - 1];
+
+    cout << "\nCongrats to " << playoffFinalsTeams[1] << " for dominating the East and making it to the NBA Finals!\n";
 }
 
 int main()
@@ -184,7 +230,9 @@ int main()
             for (i = 0; i < maxTeams;)
             {
                 //have the user choose the 8 teams that will be nominated
-                WcUserInput();
+                cout<< "\n";
+                // WcUserInput();
+                EcUserInput();
                 loopCondition = false;
                 break;
                 
